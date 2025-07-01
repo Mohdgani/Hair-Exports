@@ -1,0 +1,191 @@
+<head>
+    <!-- Add AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+        /* Silvers and Metallics */
+        --silver-soft: #c0c0c0;
+        --silver-deep: #a8a9ad;
+        --steel-gray: #606060;
+        --champagne-silver: #eaeaea;
+        --platinum: #e5e4e2;
+
+        /* Accent Colors */
+        --royal-gold: #d4af37;
+        --midnight-blue: #1a1f2b;
+        --velvet-black: #0f0f0f;
+        --rosé-blush: #e6c9c2;
+        --emerald-touch: #2e8b57;
+
+        /* Text and Shadows */
+        --text-main: #2c2c2c;
+        --text-light: #e1e1e1;
+        --shadow-soft: rgba(0,0,0,0.1);
+        --shadow-deep: rgba(0,0,0,0.2);
+        }
+
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        background-color: var(--shadow-soft);
+        color: #333;
+      }
+      header {
+        background: linear-gradient(to right, #b0b0b0, #d6d6d6);
+        color: var(--royal-gold);
+        padding: 40px 20px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        
+        /* text-shadow: 1px 1px 2px #666; */
+      }
+      
+      h6{
+        color: black !important;
+        padding: 0;
+        margin: 0;
+      }
+      nav {
+        background: #3c3c3c;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      nav a {
+        color: #eee;
+        padding: 15px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+      nav a:hover {
+        background: #5e5e5e;
+        border-radius: 5px;
+      }
+      .hero {
+        background: url('premium-hair-banner.jpg') center/cover no-repeat;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2em;
+        text-shadow: 2px 2px 5px black;
+      }
+      .section {
+        padding: 60px 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+      .card {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(180,180,180,0.2);
+        transition: transform 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .footer {
+        background: #2e2e2e;
+        color: #ccc;
+        padding: 30px;
+        text-align: center;
+      }
+
+      /*  */
+.image-text-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin: 5px 0;
+  padding: 60px;
+  background-color: var(--champagne-silver);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.side-image {
+  flex: 1;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px var(--silver-deep);
+}
+
+.side-text {
+  flex: 2;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.side-text h2 {
+  color: var(--royal-gold);
+  margin-bottom: 12px;
+}
+
+     
+    </style>
+  </head>
+  
+  <body>
+    <header data-aos="fade-down">SKANDA HUMAN HAIR EXPORTS
+        <h6>"Authentic Hair, Global Reach"</h6>
+    </header>
+    
+    <nav data-aos="fade-up">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Catalog</a>
+      <a href="#">Testimonials</a>
+      <a href="#">Contact</a>
+    </nav>
+  
+    <section class="image-text-section" data-aos="fade-up">
+        <div class="image-text-container">
+          <img src="red hair.jpg" alt="Premium Hair Sample" class="side-image" />
+          <div class="side-text">
+            <h2>Unmatched Shine & Texture</h2>
+            <p>Experience the finest quality of temple hair that radiates elegance. 100% natural, tangle-free, and ethically sourced.</p>
+          </div>
+        </div>
+      </section>
+  
+    <section class="section">
+      <div class="card" data-aos="fade-right">
+        <h2>Natural Colors</h2>
+        <p>Undyed, untouched hues for luxurious shine.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h2>Elegant Styles</h2>
+        <p>From silky straight to glamorous waves.</p>
+      </div>
+      <div class="card" data-aos="fade-left">
+        <h2>Quality Promise</h2>
+        <p>No shedding, tangle-free, 100% temple hair.</p>
+      </div>
+    </section>
+    
+
+        <div class="image-text-container" display="flex">
+            <img src="hair1.avif" alt="Premium Hair Sample" class="side-image" />  
+            <img src="hair1.avif" alt="Premium Hair Sample" class="side-image" />  
+        </div>
+
+
+  
+    <footer class="footer">
+      <p>© 2025 Chennai Hair Factory. Crafted with elegance.</p>
+    </footer>
+  
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000 });
+    </script>
+  </body>
+  
