@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Summary</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .cart-item {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        margin-bottom: 20px;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .cart-item h3 {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: crimson;
+      }
+
+      .cart-item p {
+        margin: 4px 0;
+        font-size: 15px;
+        color: #333;
+        width: 500px;
+      }
+      .cart-container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 20px;
+        flex: 1;
+      }
+      .cart-image {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .item-row {
+        display: flex;
+        align-items: center;
+        gap: 70px;
+      }
+
+      /* same as order.html */
+      .counter-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: crimson;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .counter-btn:hover {
+        background-color: #222;
+      }
+
+      /* checkout button */
+      .checkout-bar {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .checkout-btn {
+        padding: 12px 24px;
+        background-color: crimson;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+      }
+
+      .checkout-btn:hover {
+        background-color: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <header data-aos="fade-down">
+      SKANDA HUMAN HAIR EXPORTS
+      <h6>"Authentic Hair, Global Reach"</h6>
+    </header>
+
+    <nav data-aos="fade-up">
+      <a href="main.html">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Testimonials</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="cart-container">
+      <div id="cart-display"></div>
+      <div class="checkout-bar" id="checkout-bar">
+        <button class="checkout-btn" onclick="handleCheckout()">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2025</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("cart-display");
+        const checkoutBar = document.getElementById("checkout-bar");
+
+        if (!container) return;
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (cart.length === 0) {
+          container.innerHTML = "<p>No items added yet.</p>";
+          if (checkoutBar) checkoutBar.style.display = "none";
+        } else {
+          cart.forEach((item, index) => {
+            container.innerHTML += `
+      <div class="cart-item">
+        <button class="counter-btn" data-id="${index}">✖</button>
+        <div class="item-row">
+          <img src="img${item.type}.png" alt="${
+              item.type
+            } Hair" class="cart-image" />
+          <div class="item-details">
+            <h3>ORDER ${index + 1}</h3>
+            <p><strong>Length:</strong> ${item.length}</p>
+            <p><strong>Type:</strong> ${item.type}</p>
+            <p><strong>Weight:</strong> ${item.weight}</p>
+            <p><strong>Quantity:</strong> ${item.quantity}</p>
+          </div>
+        </div>
+      </div>
+    `;
+          });
+          if (checkoutBar) checkoutBar.style.display = "block";
+        }
+        // remove item from cart
+        document.addEventListener("click", function (e) {
+          if (e.target.classList.contains("counter-btn")) {
+            const index = parseInt(e.target.dataset.id);
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.splice(index, 1); // remove item
+            localStorage.setItem("cart", JSON.stringify(cart));
+            location.reload(); // refresh cart view
+          }
+        });
+        // handle checkout
+        function handleCheckout() {
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
+          if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+          }
+
+          alert("Proceeding to checkout...");
+          // Redirect or show payment popup later
+        }
+      });
+    </script>
+    <script src="main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000 });
+    </script>
+  </body>
+</html>
