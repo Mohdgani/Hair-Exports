@@ -1,5 +1,11 @@
 <head>
   <!-- Add AOS Animation Library -->
+  <title>Order</title>
+  <meta
+    name="description"
+    content="Premium temple hair bundles, ethically sourced and globally shipped."
+  />
+
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="main.css" />
 </head>
@@ -31,6 +37,7 @@
           src="hair1.webp"
           alt="Premium Hair Sample"
           class="side-image"
+          loading="lazy"
         />
         <div class="box">
           <div class="dropdown-group">
@@ -88,7 +95,7 @@
       previewImage.style.opacity = 1;
     });
   </script>
-  <script src="main.js"></script>
+  <script src="main.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000 });

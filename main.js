@@ -91,3 +91,21 @@ function showAlert(message) {
 function closeAlert() {
   document.getElementById("alertOverlay").style.display = "none";
 }
+
+// slider js
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+}
+// Optional: Auto-slide every 5 seconds
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 5000);
+
+// Initial load
+showSlide(currentSlide);

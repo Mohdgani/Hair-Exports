@@ -1,40 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>SKANDA Human Hair Exports</title>
+    <meta
+      name="description"
+      content="Premium temple hair bundles, ethically sourced and globally shipped."
+    />
     <!-- Add AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="main.css" />
-    <style>
-      .slider {
-        position: relative;
-        overflow: hidden;
-        width: 400px;
-        max-width: 500px;
-        height: 400px;
-        border-radius: 10px;
-      }
-      .slides {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        position: relative;
-        height: 100%;
-      }
-      .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-      }
-
-      .slide.active {
-        opacity: 1;
-        z-index: 2;
-      }
-    </style>
   </head>
-
   <body>
     <header data-aos="fade-down">
       SKANDA HUMAN HAIR EXPORTS
@@ -55,10 +30,21 @@
             <img
               src="Black_hair.webp"
               alt="Premium Hair Sample"
-              class="side-image slide active" loading="lazy"
+              class="side-image slide active"
+              loading="lazy"
             />
-            <img src="White_hair.webp" alt="" class="side-image slide" loading="lazy" />
-            <img src="Brown_hair.webp" alt="" class="side-image slide" loading="lazy" />
+            <img
+              src="White_hair.webp"
+              alt=""
+              class="side-image slide"
+              loading="lazy"
+            />
+            <img
+              src="Brown_hair.webp"
+              alt=""
+              class="side-image slide"
+              loading="lazy"
+            />
           </div>
         </div>
 
@@ -81,7 +67,8 @@
               <img
                 src="Singe_drawn.webp"
                 alt="Premium Hair Sample"
-                class="side-image" loading="lazy"
+                class="side-image"
+                loading="lazy"
               />
             </div>
             <div class="flip-card-back">
@@ -106,7 +93,8 @@
               <img
                 src="Double_drawn.webp"
                 alt="Premium Hair Sample"
-                class="side-image" loading="lazy"
+                class="side-image"
+                loading="lazy"
               />
             </div>
             <div class="flip-card-back">
@@ -129,26 +117,8 @@
     <footer class="footer">
       <p>© 2025</p>
     </footer>
-    <script>
-      const slides = document.querySelectorAll(".slide");
-      let currentSlide = 0;
-
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle("active", i === index);
-        });
-      }
-      // Optional: Auto-slide every 5 seconds
-      setInterval(() => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }, 5000);
-
-      // Initial load
-      showSlide(currentSlide);
-    </script>
-    <script src="main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js" defer></script>
     <script>
       AOS.init({ duration: 1000 });
     </script>

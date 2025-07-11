@@ -50,7 +50,7 @@
         <div class="item-row">
           <img src="img${item.type}.webp" alt="${
               item.type
-            } Hair" class="cart-image" />
+            } Hair" class="cart-image" loading="lazy"/>
           <div class="item-details">
             <h3>ORDER ${index + 1}</h3>
             <p><strong>Length:</strong> ${item.length}</p>
@@ -88,7 +88,7 @@
         }
       });
     </script>
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 1000 });
