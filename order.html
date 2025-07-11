@@ -231,7 +231,7 @@
       <div class="order-row">
         <img
           id="previewImage"
-          src="hair1.avif"
+          src="hair1.webp"
           alt="Premium Hair Sample"
           class="side-image"
         />
@@ -284,7 +284,7 @@
 
     hairTypeDropdown.addEventListener("change", function () {
       const selectedType = this.value;
-      previewImage.src = `img${selectedType}.png`;
+      previewImage.src = `img${selectedType}.webp`;
       previewImage.alt = `${
         selectedType.charAt(0).toUpperCase() + selectedType.slice(1)
       } Hair Sample`;
