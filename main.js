@@ -1,3 +1,14 @@
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+document.addEventListener("keydown", function (e) {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) || // Ctrl+Shift+I/J
+    (e.ctrlKey && e.key === "U") // Ctrl+U
+  ) {
+    e.preventDefault();
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("ready");
 });
