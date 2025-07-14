@@ -607,3 +607,90 @@ input[type="number"] {
   opacity: 1;
   z-index: 2;
 }
+
+.slider-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+.about {
+  padding: 60px 80px;
+  justify-content: space-around;
+  gap: 30px;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url(/Copilot_20250706_143939.webp);
+  color: #f7f7f7;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.1); /* subtle transparency */
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(12px); /* frosted effect */
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* soft border */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* depth */
+  color: #fff;
+  margin: 24px 40px;
+  transition: all 0.3s ease;
+}
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+.about-card h2 {
+  color: #d4af37;
+  margin-bottom: 12px;
+}
+
+.contact-icon {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icon i {
+  margin-right: 8px;
+  font-size: 1.6rem;
+}
+
+.contact-icon:hover {
+  transform: scale(1.1);
+}
+
+.contact-icon.email:hover {
+  color: #ffd700;
+}
+
+.contact-icon.whatsapp:hover {
+  color: #25d366;
+}
+
+.contact-icon.instagram:hover {
+  color: #e1306c;
+}
