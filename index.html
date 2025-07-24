@@ -9,18 +9,48 @@
     <!-- Add AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header data-aos="fade-down">
+      <img src="logo.jpg" alt="" class="header-logo" data-aos="zoom-in" >
       HUMAN HAIR EXPORTS
       <h6>"We Dont Just Export Hair -- We Export Confidence"</h6>
     </header>
 
     <nav data-aos="fade-up">
-      <a href="index.html">Home</a>
-      <a href="#">Products</a>
-      <a href="#">Testimonials</a>
-      <a href="about.html">About</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Testimonials</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-socials">
+        <a
+          href="mailto:skanda@example.com"
+          class="contact-icon email"
+          title="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a
+          href="https://wa.me/918123456789"
+          class="contact-icon whatsapp"
+          title="WhatsApp"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a
+          href="https://instagram.com/skandaexports"
+          class="contact-icon instagram"
+          title="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
     </nav>
 
     <section class="image-text-section" data-aos="fade-up">
@@ -94,7 +124,7 @@
                 <button><b>Machine-Weft / Bundle</b></button></a
               >
               <a href="order.html">
-                <button><b>Wigs</b></button></a
+                <button><b>Wigs</b></button></ateal
               >
             </div>
           </div>
@@ -111,43 +141,51 @@
     </footer>
     <script>
       const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
       let currentSlide = 0;
+      let autoSlideInterval;
 
+      // 🔄 Show slide based on index
       function showSlide(index) {
         slides.forEach((slide, i) => {
           slide.classList.toggle("active", i === index);
         });
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === index);
+        });
+
+        currentSlide = index;
       }
-      // Optional: Auto-slide every 5 seconds
-      setInterval(() => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }, 5000);
 
-      // Initial load
-      showSlide(currentSlide);
+      // ▶️ Auto-slide every 5 seconds
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+          let nextSlide = (currentSlide + 1) % slides.length;
+          showSlide(nextSlide);
+        }, 5000);
+      }
 
-      const dots = document.querySelectorAll(".dot");
-
-      dots.forEach((dot) => {
+      // 🖱️ Dot click navigation
+      dots.forEach((dot, i) => {
         dot.addEventListener("click", () => {
-          currentSlide = parseInt(dot.getAttribute("data-index"));
-          showSlide(currentSlide);
-          updateDots();
+          showSlide(i);
+          clearInterval(autoSlideInterval); // Restart timer
+          startAutoSlide();
+        });
+      });
+      slides.forEach((slide, i) => {
+        slide.addEventListener("click", () => {
+          let nextSlide = (currentSlide + 1) % slides.length;
+          showSlide(nextSlide);
+          clearInterval(autoSlideInterval);
+          startAutoSlide();
         });
       });
 
-      function updateDots() {
-        dots.forEach((dot, index) => {
-          dot.classList.toggle("active", index === currentSlide);
-        });
-      }
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle("active", i === index);
-        });
-        updateDots();
-      }
+      // 🔥 Initial load
+      showSlide(currentSlide);
+      startAutoSlide();
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="main.js" defer></script>

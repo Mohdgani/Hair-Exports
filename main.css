@@ -61,6 +61,7 @@ header {
   color: #111;
   font-family: "Cinzel", serif;
   text-transform: uppercase;
+  position: relative;
 }
 header::after {
   content: "";
@@ -71,6 +72,15 @@ header::after {
   background: linear-gradient(to right, gold, crimson);
   border-radius: 6px;
 }
+.header-logo {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 110px;
+  height: auto;
+  border-radius: 4px;
+  filter: contrast(1.2) brightness(1.05) saturate(1.2);
+}
 
 h6 {
   font-size: 14px;
@@ -78,13 +88,17 @@ h6 {
   color: #888;
   margin-top: 4px;
 }
+
 nav {
   background: #3c3c3c;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
   flex-wrap: wrap;
 }
-nav a {
+
+.nav-links a {
   color: #eee;
   padding: 15px;
   text-transform: uppercase;
@@ -92,10 +106,47 @@ nav a {
   text-decoration: none;
   transition: color 0.3s ease;
 }
-nav a:hover {
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  gap: 15px;
+}
+.nav-links a:hover {
   background: #5e5e5e;
   border-radius: 5px;
 }
+
+.nav-socials {
+  display: flex;
+  position: absolute;
+  right: 20px;
+  gap: 15px;
+}
+
+.contact-icon {
+  color: #fff;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icon:hover {
+  transform: scale(1.2);
+}
+
+.contact-icon.email:hover {
+  color: #ffd700;
+}
+
+.contact-icon.whatsapp:hover {
+  color: #25d366;
+}
+
+.contact-icon.instagram:hover {
+  color: #e1306c;
+}
+
 .section {
   padding: 60px 20px;
   display: flex;
@@ -139,11 +190,11 @@ nav a:hover {
 }
 
 .side-image {
-  flex: 1;
-  max-width: 400px;
-  width: 100%;
-  border-radius: 12px;
   box-shadow: 0 0 10px var(--silver-deep);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .side-text {
@@ -416,12 +467,7 @@ select {
 .order-footer button:hover {
   background-color: crimson;
 }
-.side-image {
-  width: 160px;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-}
+
 @media only screen and (max-width: 600px) {
   .order-row {
     flex-direction: column;
@@ -587,30 +633,30 @@ input[type="number"] {
   max-width: 500px;
   height: 400px;
   border-radius: 10px;
-}
-.slides {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  position: relative;
-  height: 100%;
+  flex-direction: column;
+  align-items: center;
 }
+
 .slide {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
 .slide.active {
+  position: relative;
   opacity: 1;
   z-index: 2;
 }
 
 .slider-dots {
-  text-align: center;
-  margin-top: 10px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  z-index: 5;
 }
 
 .dot {
@@ -619,13 +665,12 @@ input[type="number"] {
   margin: 0 4px;
   background-color: #ccc;
   border-radius: 50%;
-  display: inline-block;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .dot.active {
-  background-color: #333;
+  background-color: #e1306c;
 }
 
 .about {
@@ -664,33 +709,4 @@ input[type="number"] {
 .about-card h2 {
   color: #d4af37;
   margin-bottom: 12px;
-}
-
-.contact-icon {
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.8rem;
-  text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.contact-icon i {
-  margin-right: 8px;
-  font-size: 1.6rem;
-}
-
-.contact-icon:hover {
-  transform: scale(1.1);
-}
-
-.contact-icon.email:hover {
-  color: #ffd700;
-}
-
-.contact-icon.whatsapp:hover {
-  color: #25d366;
-}
-
-.contact-icon.instagram:hover {
-  color: #e1306c;
 }

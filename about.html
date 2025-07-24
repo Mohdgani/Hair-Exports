@@ -11,10 +11,21 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <style>
-      p {
+      p1 {
         font-size: 0.9em;
+        columns: 220px;
+        column-gap: 20px;
+        column-rule: 1px solid #ccc;
+      }
+      .title {
+        column-span: all;
+        display: block;
       }
     </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header data-aos="fade-down">
@@ -23,10 +34,35 @@
     </header>
 
     <nav data-aos="fade-up">
-      <a href="index.html">Home</a>
-      <a href="#">Products</a>
-      <a href="#">Testimonials</a>
-      <a href="about.html">About</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Testimonials</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-socials">
+        <a
+          href="mailto:skanda@example.com"
+          class="contact-icon email"
+          title="Email"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a
+          href="https://wa.me/918123456789"
+          class="contact-icon whatsapp"
+          title="WhatsApp"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a
+          href="https://instagram.com/skandaexports"
+          class="contact-icon instagram"
+          title="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
     </nav>
     <section class="about">
       <div class="about-card">
@@ -34,7 +70,7 @@
         <p>
           Business Name: Skanda Human Hair Exports <br />
           Location: Chennai, Tamil Nadu, <br />
-          India Founder: Venkat Elumalai <br />
+          India Founder: Venkat <br />
           Nature of Business: Manufacturer & Exporter <br />
           Products: 100% Natural Human Hair - Single Drawn & Double Drawn Export
           <br />
@@ -64,19 +100,6 @@
     </section>
 
     <footer class="footer">
-      <a href="skandahumanhairexports@gmail.com" class="contact-icon email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://wa.me/91-7010970898" class="contact-icon whatsapp">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a
-        href="https://instagram.com/skanda_humanhair"
-        class="contact-icon instagram"
-        target="_blank"
-      >
-        <i class="fab fa-instagram"></i>
-      </a>
       <p>© 2025</p>
     </footer>
     <script src="main.js" defer></script>
