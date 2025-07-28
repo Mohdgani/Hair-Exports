@@ -19,6 +19,14 @@
   --shadow-soft: rgba(0, 0, 0, 0.1);
   --shadow-deep: rgba(0, 0, 0, 0.2);
 }
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+html {
+  overflow-x: hidden;
+}
 
 html,
 body {
@@ -29,19 +37,19 @@ body {
   min-height: 100vh;
 }
 section {
-  flex: 1; /* Pushes footer to bottom */
+  flex: 1;
 }
 body > * {
   flex-shrink: 0;
 }
 body {
+  box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.1s ease;
   font-family: "Segoe UI", sans-serif;
   margin: 0;
   background-color: var(--shadow-soft);
   color: #333;
-  overflow-x: hidden;
 }
 
 body.ready {
@@ -120,9 +128,9 @@ nav {
 
 .nav-socials {
   display: flex;
-  position: absolute;
+  position: static;
   right: 20px;
-  gap: 15px;
+  gap: 10px;
 }
 
 .contact-icon {
@@ -148,11 +156,11 @@ nav {
 }
 
 .section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   display: flex;
   flex-wrap: wrap;
+  gap: 40px;
   justify-content: space-around;
-  gap: 30px;
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.1),
       rgba(0, 0, 0, 0.3)
@@ -187,13 +195,15 @@ nav {
   background-color: var(--champagne-silver);
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .side-image {
   box-shadow: 0 0 10px var(--silver-deep);
-  width: 100%;
+  width: 80%;
   height: 100%;
   object-fit: cover;
+  object-position: bottom;
   border-radius: 10px;
 }
 
@@ -218,7 +228,7 @@ nav {
   box-shadow: 0 0 10px rgba(180, 180, 180, 0.2);
   transition: transform 0.3s ease;
   width: 100%;
-  max-width: 400px;
+  max-width: 250px;
   background-color: var(--champagne-silver);
 }
 .card:hover {
@@ -309,15 +319,99 @@ nav {
   width: 200px;
 }
 
-@media only screen and (max-width: 768px) and (min-width: 480px) {
+@media only screen and (max-width: 1024px) {
+  .about {
+    padding: 40px 20px;
+  }
+  .slider {
+    max-width: 100px;
+    height: 200px;
+  }
+  .order-box {
+    width: 100vw;
+    min-width: unset;
+  }
+  .cart-container {
+    max-width: 95vw;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px 10px;
+    gap: 30px;
+  }
+  .about {
+    padding: 20px 5px;
+  }
+  .about-card {
+    margin: 12px;
+    padding: 16px;
+  }
+  .image-text-container {
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 16px;
   }
   .card {
+    width: 70%;
+    max-width: 95vw;
+    min-width: unset;
+    padding: 16px;
+  }
+  .slider {
     width: 100%;
-    max-width: 400px;
+    max-width: 95vw;
+    height: 220px;
+  }
+  .item-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cart-item p {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .nav-socials {
+    position: static;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .order-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .order-box {
+    width: 80%;
+  }
+  .order-footer button {
+    width: 80%;
+  }
+  .about {
+    padding: 10px 2px;
+  }
+  .about-card {
+    margin: 6px 0;
+    padding: 10px;
+  }
+  .slider {
+    height: 110px;
+  }
+  .image-text-container {
+    padding: 8px 2px;
+  }
+  .footer {
+    padding: 10px 2px;
+    font-size: 13px;
   }
 }
 
@@ -482,6 +576,20 @@ select {
   .order-footer button {
     width: 100%;
   }
+  .slide.active {
+    position: relative;
+    opacity: 1;
+    z-index: 2;
+    height: 400px;
+    width: 500px;
+  }
+}
+
+.orderside-image {
+  width: 250px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
 }
 .box {
   height: 100px;
@@ -629,9 +737,7 @@ input[type="number"] {
 .slider {
   position: relative;
   overflow: hidden;
-  width: 400px;
-  max-width: 500px;
-  height: 400px;
+  height: 500px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -709,4 +815,107 @@ input[type="number"] {
 .about-card h2 {
   color: #d4af37;
   margin-bottom: 12px;
+}
+
+/*  */
+/*  */
+
+@media (max-width: 768px) {
+  .image-text-container,
+  .item-row,
+  .order-row,
+  .nav-links,
+  .section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card,
+  .order-box {
+    width: 90%;
+  }
+
+  .header-logo {
+    width: 80px;
+  }
+
+  .nav-socials {
+    position: static;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .side-text {
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .checkout-btn,
+  .flip-trigger,
+  .order-footer button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .count-btn,
+  .add-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  #counter-value {
+    font-size: 1rem;
+  }
+}
+
+button,
+.contact-icon {
+  font-size: 1.5rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  padding: 12px;
+}
+
+.image-text-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.slider {
+  width: 80%;
+  max-width: 500px;
+}
+
+.card {
+  width: 100%;
+  max-width: 320px;
+}
+
+.order-box {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+
+.orderside-image {
+  width: 100%;
+  height: auto;
 }
