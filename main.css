@@ -629,6 +629,17 @@ select {
   justify-content: center;
   margin-top: 10px;
 }
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: crimson;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
 .count-btn {
   background-color: #222;
   color: #fff;

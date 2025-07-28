@@ -71,9 +71,9 @@
           <div class="dropdown-group">
             <label for="length">Length</label>
             <select id="length">
-              <option value="inch12">1.2 Inch</option>
-              <option value="inch14">1.4 Inch</option>
-              <option value="inch16">1.6 Inch</option>
+              <option value="inch1.2">1.2 Inch</option>
+              <option value="inch1.4">1.4 Inch</option>
+              <option value="inch1.6">1.6 Inch</option>
             </select>
           </div>
           <div class="dropdown-group">
@@ -98,6 +98,7 @@
             <input type="number" id="counter-value" value="1" min="1" />
             <button class="count-btn" onclick="increment()">+</button>
           </div>
+          <div class="price"></div>
         </div>
       </div>
       <div class="order-footer">
@@ -122,6 +123,44 @@
       } Hair Sample`;
       previewImage.style.opacity = 1;
     });
+
+    // price calculation
+    const priceDiv = document.querySelector(".price");
+    const lengthSelect = document.getElementById("length");
+    const typeSelect = document.getElementById("hairType");
+    const weightSelect = document.getElementById("weight");
+    const quantityInput = document.getElementById("counter-value");
+
+    // Set initial price to ₹0
+    priceDiv.textContent = "Price: ₹0";
+
+    // Centralized price mapping
+    let priceMap = {};
+
+    fetch("prices.json")
+      .then((response) => response.json())
+      .then((data) => {
+        priceMap = data;
+        calculatePrice(); // call once to set initial price
+      })
+      .catch((error) => console.error("Failed to load prices:", error));
+    function calculatePrice() {
+      const length = lengthSelect.value;
+      const type = typeSelect.value;
+      const weight = weightSelect.value;
+      const quantity = parseInt(quantityInput.value) || 1;
+
+      const key = `${length}_${weight}_${type}`;
+      const pricePerUnit = priceMap[key] || 0;
+      const totalPrice = pricePerUnit * quantity;
+
+      priceDiv.textContent = `Price: ₹${totalPrice}`;
+    }
+
+    lengthSelect.addEventListener("change", calculatePrice);
+    typeSelect.addEventListener("change", calculatePrice);
+    weightSelect.addEventListener("change", calculatePrice);
+    quantityInput.addEventListener("input", calculatePrice);
   </script>
   <script src="main.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
