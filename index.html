@@ -23,6 +23,8 @@
     </header>
 
     <nav data-aos="fade-up">
+      <button class="hamburger" id="menuToggle">&#9776;</button>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="#">Products</a>
@@ -134,8 +136,8 @@
               />
             </div>
             <div class="flip-card-back">
-              <a href="order.html"> <button>Machine-Weft / Bundle</button></a>
-              <a href="order.html"> <button>Wigs</button></a>
+              <a href="order.html"> <button>Frontal</button></a>
+              <a href="order.html"> <button>Closure</button></a>
             </div>
           </div>
         </div>
@@ -218,6 +220,16 @@
       // Initial load
       showSlide(currentSlide);
       startAutoSlide();
+
+      // Hamburger menu toggle
+      const menuToggle = document.getElementById("menuToggle");
+      // const navLinks = document.querySelector(".nav-links");
+      const nav = document.querySelector("nav");
+
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("collapsed");
+        // navLinks.classList.toggle("collapsed");
+      });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="main.js" defer></script>
