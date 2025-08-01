@@ -22,7 +22,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 html {
   overflow-x: hidden;
@@ -80,14 +80,38 @@ header::after {
   background: linear-gradient(to right, gold, crimson);
   border-radius: 6px;
 }
-.header-logo {
+.cart-icon {
+  background-color: #0f0f0f;
+  border-radius: 50%;
+  padding: 20px;
   position: absolute;
-  top: 10px;
-  left: 20px;
-  width: 110px;
-  height: auto;
-  border-radius: 4px;
-  filter: contrast(1.2) brightness(1.05) saturate(1.2);
+  top: 24px;
+  right: 24px;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 10;
+  color: white;
+}
+
+.cart-count {
+  position: absolute;
+  top: 40px;
+  right: 2px;
+  background: #d4af37;
+  color: #1a1f2b;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 7px;
+  min-width: 22px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.cart-icon:hover {
+  color: purple;
 }
 
 h6 {
@@ -156,8 +180,8 @@ nav {
 }
 
 .section {
-  padding: 80px 20px;
-  display: flex;
+  padding: 80px 20px; /*causing gap on mobile view*/
+  display: flex; /*causing gap on mobile view*/
   flex-wrap: wrap;
   gap: 40px;
   justify-content: space-around;
@@ -171,10 +195,7 @@ nav {
   background-size: cover;
   background-position: center;
 }
-.section > * {
-  position: relative;
-  z-index: 1;
-}
+
 .footer {
   background: #2e2e2e;
   color: #ccc;
@@ -257,7 +278,6 @@ nav {
 
 .flip-card {
   background-color: transparent;
-  /* width: 300px; */
   height: 340px;
   perspective: 1000px;
 }
@@ -336,7 +356,7 @@ nav {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   text-align: center;
-  z-index: 1000; /* Higher than backdrop */
+  z-index: 1000;
 }
 
 .alert-box button {
@@ -743,59 +763,18 @@ h2 {
   display: none;
 }
 
-/*  */
-/*  */
-/* @media only screen and (max-width: 768px) {
-  .section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 10px;
-    gap: 30px;
-  }
-  .about {
-    padding: 20px 5px;
-  }
-  .about-card {
-    margin: 12px;
-    padding: 16px;
-  }
-  .image-text-container {
-    flex-direction: column;
-    padding: 20px 10px;
-    gap: 16px;
-  }
-  .card {
-    width: 70%;
-    max-width: 95vw;
-    min-width: unset;
-    padding: 16px;
-  }
-  .slider {
-    width: 100%;
-    max-width: 95vw;
-    height: 220px;
-  }
-  .item-row {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .cart-item p {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .nav-socials {
-    position: static;
-    justify-content: center;
-    width: 100%;
-    margin-top: 10px;
-  }
-  .flip-card-back {
-    right: -10%;
-  }
-} */
-
+.totalprice {
+  padding: 10px 24px;
+  background-color: teal;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
 @media only screen and (max-width: 1024px) {
   .about {
     padding: 40px 20px;
@@ -814,6 +793,16 @@ h2 {
 }
 
 @media only screen and (max-width: 600px) {
+  .cart-icon {
+    padding: 10px;
+    top: 46px;
+    right: 14px;
+  }
+  .cart-count {
+    top: 30px;
+    right: -2px;
+  }
+
   .side-image {
     width: 100%;
   }
@@ -833,15 +822,18 @@ h2 {
     font-size: 13px;
   }
   /*  */
+  .order-box {
+    height: auto;
+  }
   .box {
-    width: 100%;
-    display: flex;
+    width: 90%;
     flex-direction: column;
     gap: 12px;
     align-items: center;
     height: auto;
   }
   .order-row {
+    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
@@ -850,13 +842,8 @@ h2 {
   }
 
   .orderside-image {
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
-  }
-
-  .order-footer button {
-    width: 30%;
-    margin: 10px 0;
   }
 
   .order-footer {
@@ -871,6 +858,26 @@ h2 {
 
 /*  */
 @media (max-width: 768px) {
+  .order-box {
+    width: 90vw;
+    min-width: unset;
+  }
+  .order-row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .order-footer {
+    display: flex;
+    justify-content: space-around;
+  }
+  .order-footer button,
+  .order-footer a {
+    width: 30vw;
+    margin: 10px 0;
+  }
   .image-text-container,
   .item-row,
   .nav-links,
@@ -881,9 +888,9 @@ h2 {
 
   nav {
     padding: 16px 20px;
-    border-radius: 12px;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .nav-links.collapsed {

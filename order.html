@@ -5,6 +5,7 @@
     name="description"
     content="Premium temple hair bundles, ethically sourced and globally shipped."
   />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="main.css" />
@@ -16,10 +17,16 @@
 
 <body>
   <header data-aos="fade-down">
+    <a href="cart.html" class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </a>
     Skanda HUMAN HAIR EXPORTS
-    <h6>"Authentic Hair, Global Reach"</h6>
+    <h6>"We Dont Just Export Hair -- We Export Confidence"</h6>
   </header>
-  <nav data-aos="fade-up">
+  <nav data-aos="fade-up" class="collapsed">
+    <button class="hamburger" id="menuToggle">&#9776;</button>
+
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="#">Products</a>
@@ -27,17 +34,33 @@
       <a href="about.html">About</a>
     </div>
     <div class="nav-socials">
-      <a href="" class="contact-icon email" title="Email">
+      <a
+        href="mailto:skanda@example.com"
+        class="contact-icon email"
+        title="Email"
+        target="_blank"
+      >
         <i class="fas fa-envelope"></i>
       </a>
-      <a href="" class="contact-icon whatsapp" title="WhatsApp">
+      <a
+        href="https://wa.me/917010970898"
+        class="contact-icon whatsapp"
+        title="WhatsApp"
+        target="_blank"
+      >
         <i class="fab fa-whatsapp"></i>
       </a>
-      <a href="" class="contact-icon instagram" title="Instagram">
+      <a
+        href="https://www.instagram.com/skandahairofficial?igsh=MWRhZm1wcmpteGVycw=="
+        class="contact-icon instagram"
+        title="Instagram"
+        target="_blank"
+      >
         <i class="fab fa-instagram"></i>
       </a>
     </div>
   </nav>
+
   <div id="alertOverlay">
     <div class="alert-backdrop"></div>
     <div id="customAlert" class="alert-box">
@@ -86,11 +109,11 @@
             <input type="number" id="counter-value" value="1" min="1" />
             <button class="count-btn" onclick="increment()">+</button>
           </div>
-          <div class="price"></div>
+          <div class="price" id="price"></div>
         </div>
       </div>
       <div class="order-footer">
-        <button onclick="placeOrder()">Your Order Summary</button>
+        <button onclick="cartpage()">Your Order Summary</button>
         <button id="add">Add To Cart</button>
       </div>
     </div>
@@ -99,57 +122,7 @@
   <footer class="footer">
     <p>© 2025</p>
   </footer>
-  <script>
-    const hairTypeDropdown = document.getElementById("hairType");
-    const previewImage = document.getElementById("previewImage");
-
-    hairTypeDropdown.addEventListener("change", function () {
-      const selectedType = this.value;
-      previewImage.src = `img${selectedType}.webp`;
-      previewImage.alt = `${
-        selectedType.charAt(0).toUpperCase() + selectedType.slice(1)
-      } Hair Sample`;
-      previewImage.style.opacity = 1;
-    });
-
-    // price calculation
-    const priceDiv = document.querySelector(".price");
-    const lengthSelect = document.getElementById("length");
-    const typeSelect = document.getElementById("hairType");
-    const weightSelect = document.getElementById("weight");
-    const quantityInput = document.getElementById("counter-value");
-
-    // Set initial price to ₹0
-    priceDiv.textContent = "Price: ₹0";
-
-    // Centralized price mapping
-    let priceMap = {};
-
-    fetch("prices.json")
-      .then((response) => response.json())
-      .then((data) => {
-        priceMap = data;
-        calculatePrice(); // call once to set initial price
-      })
-      .catch((error) => console.error("Failed to load prices:", error));
-    function calculatePrice() {
-      const length = lengthSelect.value;
-      const type = typeSelect.value;
-      const weight = weightSelect.value;
-      const quantity = parseInt(quantityInput.value) || 1;
-
-      const key = `${length}_${weight}_${type}`;
-      const pricePerUnit = priceMap[key] || 0;
-      const totalPrice = pricePerUnit * quantity;
-
-      priceDiv.textContent = `Price: ₹${totalPrice}`;
-    }
-
-    lengthSelect.addEventListener("change", calculatePrice);
-    typeSelect.addEventListener("change", calculatePrice);
-    weightSelect.addEventListener("change", calculatePrice);
-    quantityInput.addEventListener("input", calculatePrice);
-  </script>
+  <script></script>
   <script src="main.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>

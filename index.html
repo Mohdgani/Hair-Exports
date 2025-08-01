@@ -15,14 +15,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
+
   <body>
     <header data-aos="fade-down">
-      <!-- <img src="logo.jpg" alt="" class="header-logo" data-aos="zoom-in" /> -->
+      <a href="cart.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
       Skanda HUMAN HAIR EXPORTS
       <h6>"We Dont Just Export Hair -- We Export Confidence"</h6>
     </header>
 
-    <nav data-aos="fade-up">
+    <nav data-aos="fade-up" class="collapsed">
       <button class="hamburger" id="menuToggle">&#9776;</button>
 
       <div class="nav-links">
@@ -173,64 +177,6 @@
     <footer class="footer">
       <p>© 2025</p>
     </footer>
-    <script>
-      const slides = document.querySelectorAll(".slide");
-      const dots = document.querySelectorAll(".dot");
-      let currentSlide = 0;
-      let autoSlideInterval;
-
-      // 🔄 Show slide based on index
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.toggle("active", i === index);
-        });
-
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("active", i === index);
-        });
-
-        currentSlide = index;
-      }
-
-      // ▶️ Auto-slide every 5 seconds
-      function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-          let nextSlide = (currentSlide + 1) % slides.length;
-          showSlide(nextSlide);
-        }, 5000);
-      }
-
-      // 🖱️ Dot click navigation
-      dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-          showSlide(i);
-          clearInterval(autoSlideInterval); // Restart timer
-          startAutoSlide();
-        });
-      });
-      slides.forEach((slide, i) => {
-        slide.addEventListener("click", () => {
-          let nextSlide = (currentSlide + 1) % slides.length;
-          showSlide(nextSlide);
-          clearInterval(autoSlideInterval);
-          startAutoSlide();
-        });
-      });
-
-      // Initial load
-      showSlide(currentSlide);
-      startAutoSlide();
-
-      // Hamburger menu toggle
-      const menuToggle = document.getElementById("menuToggle");
-      // const navLinks = document.querySelector(".nav-links");
-      const nav = document.querySelector("nav");
-
-      menuToggle.addEventListener("click", () => {
-        nav.classList.toggle("collapsed");
-        // navLinks.classList.toggle("collapsed");
-      });
-    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="main.js" defer></script>
     <script>

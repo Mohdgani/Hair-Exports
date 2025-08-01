@@ -13,10 +13,11 @@
   <body>
     <header data-aos="fade-down">
       Skanda HUMAN HAIR EXPORTS
-      <h6>"Authentic Hair, Global Reach"</h6>
+      <h6>"We Dont Just Export Hair -- We Export Confidence"</h6>
     </header>
+    <nav data-aos="fade-up" class="collapsed">
+      <button class="hamburger" id="menuToggle">&#9776;</button>
 
-    <nav data-aos="fade-up">
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="#">Products</a>
@@ -28,20 +29,23 @@
           href="mailto:skanda@example.com"
           class="contact-icon email"
           title="Email"
+          target="_blank"
         >
           <i class="fas fa-envelope"></i>
         </a>
         <a
-          href="https://wa.me/918123456789"
+          href="https://wa.me/917010970898"
           class="contact-icon whatsapp"
           title="WhatsApp"
+          target="_blank"
         >
           <i class="fab fa-whatsapp"></i>
         </a>
         <a
-          href="https://instagram.com/skandaexports"
+          href="https://www.instagram.com/skandahairofficial?igsh=MWRhZm1wcmpteGVycw=="
           class="contact-icon instagram"
           title="Instagram"
+          target="_blank"
         >
           <i class="fab fa-instagram"></i>
         </a>
@@ -54,6 +58,7 @@
         <button class="checkout-btn" onclick="handleCheckout()">
           Proceed to Checkout
         </button>
+        <span id="totalPrice" class="totalprice"></span>
       </div>
     </div>
 
@@ -68,12 +73,21 @@
         if (!container) return;
 
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+        const cartCount = document.getElementById("cartCount");
         if (cart.length === 0) {
           container.innerHTML = "<p>No items added yet.</p>";
           if (checkoutBar) checkoutBar.style.display = "none";
+          const totalPriceSpan = document.getElementById("totalPrice");
+          if (totalPriceSpan) totalPriceSpan.textContent = "";
         } else {
+          let totalPrice = 0;
           cart.forEach((item, index) => {
+            console.log(
+              "Cart item price:",
+              item.price,
+              "quantity:",
+              item.quantity
+            );
             container.innerHTML += `
       <div class="cart-item">
         <button class="counter-btn" data-id="${index}">✖</button>
@@ -87,13 +101,28 @@
             <p><strong>Type:</strong> ${item.type}</p>
             <p><strong>Weight:</strong> ${item.weight}</p>
             <p><strong>Quantity:</strong> ${item.quantity}</p>
+            <p><strong>Price:</strong> ${item.price}</p>
           </div>
         </div>
       </div>
     `;
+            totalPrice += parseFloat(item.price);
           });
           if (checkoutBar) checkoutBar.style.display = "block";
+          const totalPriceSpan = document.getElementById("totalPrice");
+          if (totalPriceSpan)
+            totalPriceSpan.textContent = `Total Price: ₹${totalPrice.toFixed(
+              2
+            )}`;
         }
+        // if (cartCount) {
+        //   // Sum all quantities in the cart
+        //   const total = cart.reduce(
+        //     (sum, item) => sum + (parseInt(item.quantity) || 1),
+        //     0
+        //   );
+        //   cartCount.textContent = total;
+        // }
         // remove item from cart
         document.addEventListener("click", function (e) {
           if (e.target.classList.contains("counter-btn")) {
@@ -104,6 +133,15 @@
             localStorage.setItem("cart", JSON.stringify(cart));
             location.reload(); // refresh cart view
           }
+          if (cartCount) {
+            const total = cart.reduce(
+              (sum, item) => sum + (parseInt(item.quantity) || 1),
+              0
+            );
+            cartCount.textContent = total;
+          }
+
+          location.reload(); // refresh cart view
         });
         // handle checkout
         function handleCheckout() {
