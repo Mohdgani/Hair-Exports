@@ -102,8 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const nav = document.querySelector("nav");
   menuToggle.addEventListener("click", (e) => {
-    nav.classList.toggle("collapsed");
     e.stopPropagation();
+    nav.classList.toggle("collapsed");
   });
 
   // Remove AOS on mobile
@@ -112,8 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
       el.removeAttribute("data-aos");
     });
   }
+});
 
-  // 🛒 Add to Cart
+// 🛒 Add to Cart
+document.addEventListener("DOMContentLoaded", () => {
   const addButton = document.getElementById("add");
   if (addButton) {
     addButton.addEventListener("click", () => {
