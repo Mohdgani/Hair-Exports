@@ -189,7 +189,7 @@ nav {
       rgba(255, 255, 255, 0.1),
       rgba(0, 0, 0, 0.3)
     ),
-    url("/images/bghair.webp");
+    url("images/bghair.webp");
   background-color: #cccccc;
   background-attachment: fixed;
   background-size: cover;
@@ -671,7 +671,7 @@ input[type="number"] {
       rgba(255, 255, 255, 0.1),
       rgba(0, 0, 0, 0.3)
     ),
-    url("/images/bghair.webp");
+    url("images/bghair.webp");
   color: #f7f7f7;
   background-attachment: fixed;
   background-size: cover;
