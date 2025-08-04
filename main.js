@@ -150,7 +150,11 @@ function updateCartBadge() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const badge = document.getElementById("cartCount");
   if (badge) {
-    badge.textContent = cart.length;
+    const total = cart.reduce(
+      (sum, item) => sum + (parseInt(item.quantity) || 1),
+      0
+    );
+    badge.textContent = total;
   }
 }
 
@@ -161,7 +165,7 @@ const previewImage = document.getElementById("previewImage");
 
 hairTypeDropdown.addEventListener("change", function () {
   const selectedType = this.value;
-  previewImage.src = `img${selectedType}.webp`;
+  previewImage.src = `/images/img${selectedType}.webp`;
   previewImage.alt = `${
     selectedType.charAt(0).toUpperCase() + selectedType.slice(1)
   } Hair Sample`;
